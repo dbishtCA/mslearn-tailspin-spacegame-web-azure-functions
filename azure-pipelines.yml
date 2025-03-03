@@ -9,6 +9,7 @@ stages:
       inputs:
         serviceConnectionEndpoint: 'synk'
         testType: 'code'
+        codeSeverityThreshold: 'medium'
         failOnIssues: true
         
 - stage: 'Build'
@@ -70,3 +71,4 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
+      
