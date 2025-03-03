@@ -4,12 +4,12 @@ stages:
   jobs:
   - job: 'scan'
     steps:
-    - task: Snyk@1
-      displayName: 'Snyk Scan'
+    - task: SnykSecurityScan@1
+      displayName: 'Synk security scan'
       inputs:
-        serviceConnection: 'synk'
-        options: '--severity-threshold=medium'
-        projectPath: '$(System.DefaultWorkingDirectory)'
+        serviceConnectionEndpoint: 'synk'
+        testType: 'code'
+        failOnIssues: true
         
 - stage: 'Build'
   displayName: 'Build the web application'
