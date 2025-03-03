@@ -1,4 +1,16 @@
 stages:
+- stage: 'synk_scan'
+  displayName: 'synk scan'
+  jobs:
+  - job: 'scan'
+    steps:
+    - task: Snyk@1
+      displayName: 'Snyk Scan'
+      inputs:
+        serviceConnection: 'synk'
+        options: '--severity-threshold=medium'
+        projectPath: '$(System.DefaultWorkingDirectory)'
+        
 - stage: 'Build'
   displayName: 'Build the web application'
   jobs: 
